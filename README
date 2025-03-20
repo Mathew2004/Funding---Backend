@@ -1,4 +1,35 @@
-#Quick Install
+# Admin Authentication System with JWT
 
-`npm i --save`
-`nodemon index`
+This is a simple Node.js application that allows an admin to sign up and log in using JWT (JSON Web Tokens) for authentication. The application uses MongoDB Atlas for database storage, `bcryptjs` for password hashing, and `jsonwebtoken` for creating and verifying JWT tokens.
+
+## Features
+
+- **Admin Signup**: Allows new admins to register by providing an email and password.
+- **Admin Login**: Authenticates admins by verifying their email and password, and returns a JWT token.
+- **JWT Authentication**: Tokens are generated during login and can be used for secure access to protected routes.
+- **Password Hashing**: Passwords are hashed using `bcryptjs` before storing them in the database for security.
+
+## Technologies Used
+
+- Node.js
+- Express.js
+- MongoDB (via Mongoose)
+- JWT (JSON Web Token)
+- bcryptjs (for password hashing)
+- dotenv (for managing environment variables)
+
+## Prerequisites
+
+1. Node.js installed (preferably the latest LTS version).
+2. MongoDB Atlas account and a cluster created (you can create a free cluster).
+3. Basic knowledge of how JWT works.
+
+## Setup
+
+### 1. Clone the Repository
+
+```bash
+https://github.com/Mathew2004/Funding---Backend.git 
+
+cd Funding-Backend
+nodemon index
