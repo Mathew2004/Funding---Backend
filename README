@@ -1,0 +1,4 @@
+#Quick Install
+
+`npm i --save`
+`nodemon index`
