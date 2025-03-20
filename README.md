@@ -29,7 +29,7 @@ This is a Node.js-based Admin Authentication System that uses **JSON Web Tokens 
 ### 1. Clone the Repository
 
 ```bash
-git clone https://github.com/your-username/admin-auth-jwt.git
+git https://github.com/Mathew2004/Funding---Backend.git
 cd admin-auth-jwt
 ```
 
