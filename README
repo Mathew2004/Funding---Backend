@@ -32,4 +32,4 @@ This is a simple Node.js application that allows an admin to sign up and log in 
 https://github.com/Mathew2004/Funding---Backend.git 
 
 cd Funding-Backend
-nodemon index
+nodemon index ```
