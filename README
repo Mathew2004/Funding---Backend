@@ -1,6 +1,6 @@
 
-```markdown
-# Admin Authentication System with JWT
+
+<h2>Admin Authentication System with JWT<h2>
 
 This is a Node.js-based Admin Authentication System that uses **JSON Web Tokens (JWT)** for secure authentication. The app allows admins to sign up, log in, and access protected routes. The app uses **MongoDB Atlas** as the database and **bcryptjs** for secure password hashing.
 
