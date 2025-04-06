@@ -6,19 +6,13 @@ const dotenv = require('dotenv');
 dotenv.config();
 
 const router = express.Router();
-
-// Admin model (simplified for this example)
-const Admin = mongoose.model('Admin', new mongoose.Schema({
-  email: { type: String, required: true, unique: true },
-  password: { type: String, required: true }
-}));
+const Admin = require('../models/Admin'); // Import the Admin model
 
 // Admin signup route
 router.post('/signup', async (req, res) => {
   const { email, password } = req.body;
 
   try {
-    // Check if admin already exists
     const existingAdmin = await Admin.findOne({ email });
     if (existingAdmin) {
       return res.status(400).json({ msg: 'Admin already exists' });
@@ -46,15 +40,14 @@ router.post('/signup', async (req, res) => {
 // Admin login route
 router.post('/login', async (req, res) => {
   const { email, password } = req.body;
-
+  console.log(email, password);
   try {
-    // Check if admin exists
+
     const admin = await Admin.findOne({ email });
     if (!admin) {
       return res.status(400).json({ msg: 'Invalid email or password' });
     }
 
-    // Compare password
     const isMatch = await bcrypt.compare(password, admin.password);
     if (!isMatch) {
       return res.status(400).json({ msg: 'Invalid email or password' });
