@@ -30,7 +30,7 @@ This is a Node.js-based Admin Authentication System that uses **JSON Web Tokens 
 
 ```bash
 git https://github.com/Mathew2004/Funding---Backend.git
-cd admin-auth-jwt
+cd Funding---Backend
 ```
 
 ### 2. Install Dependencies
@@ -60,7 +60,7 @@ MONGO_URI=mongodb+srv://<username>:<password>@cluster0.mongodb.net/<dbname>?retr
 Once everything is set up, you can start the server with:
 
 ```bash
-npm start
+node index
 ```
 
 The server will be running on `http://localhost:5000`.
@@ -100,18 +100,6 @@ The server will be running on `http://localhost:5000`.
   ```json
   {
     "token": "<JWT_TOKEN>"
-  }
-  ```
-
-### 3. **Protected Route** (Example of a protected route using JWT)
-
-- **URL**: `/admin/protected`
-- **Method**: `GET`
-- **Authorization**: Bearer Token (JWT token obtained after login)
-- **Response**:
-  ```json
-  {
-    "msg": "You have access to this protected route!"
   }
   ```
 
