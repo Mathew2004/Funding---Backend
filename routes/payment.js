@@ -6,6 +6,8 @@ const Donation = require("../models/Donation");
 
 const router = express.Router();
 
+const verifyToken = require("../middleware/auth");
+
 const stripe = Stripe(process.env.STRIPE_SECRET_KEY);
 
 router.post("/", async (req, res) => {
@@ -42,8 +44,9 @@ router.post("/", async (req, res) => {
 });
 
 
-router.get("/payments", async (req, res) => {
+router.get("/payments",verifyToken ,async (req, res) => {
     try {
+        console.log("Admin ",req.admin);
         const sessions = await stripe.checkout.sessions.list();
         const data = sessions.data.map((session) => {
             return {
@@ -71,8 +74,9 @@ router.get("/payments", async (req, res) => {
     }
 });
 
-router.get("/dashboard", async (req, res) => {
+router.get("/dashboard",verifyToken, async (req, res) => {
     try {
+        console.log("Admin ",req.admin);
         const donations = await stripe.checkout.sessions.list();
         const totalDonations = donations.reduce((acc, donation) => acc + (donation.amount/100), 0);
        
