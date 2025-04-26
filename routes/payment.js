@@ -74,13 +74,25 @@ router.get("/payments",verifyToken ,async (req, res) => {
     }
 });
 
-router.get("/dashboard",verifyToken, async (req, res) => {
+router.get("/dashboard", async (req, res) => {
     try {
-        console.log("Admin ",req.admin);
-        const donations = await stripe.checkout.sessions.list();
-        const totalDonations = donations.reduce((acc, donation) => acc + (donation.amount/100), 0);
-       
-        res.json({ data });
+        const sessions = await stripe.checkout.sessions.list();
+        const donations = sessions.data.filter((session) => session.payment_status === "paid")
+        const totalDonations = donations.reduce((acc, donation) => acc + donation.amount_total/100, 0);
+        const totalCount = donations.length; 
+        const donationToday = donations.filter((donation) => {
+            const donationDate = new Date(donation.created * 1000).toLocaleDateString();
+            const today = new Date().toLocaleDateString();
+            return donationDate === today;
+        });
+        const totalToday = donationToday.reduce((acc, donation) => acc + donation.amount_total/100, 0);
+        const dashboardData = {
+            "total" : totalDonations,
+            "donors" : totalCount,
+            "today" : totalToday
+        }
+        
+        res.json({ dashboardData });
     } catch (error) {
         res.status(500).json({ error: error.message });
     }

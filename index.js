@@ -20,6 +20,9 @@ app.use(cors()); // Allow requests from frontend
 connectDB();
 
 
+// email password
+// post /admin/signup
+
 // Middleware
 app.use(express.json()); // for parsing application/json
 
