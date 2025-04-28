@@ -20,11 +20,8 @@ app.use(cors()); // Allow requests from frontend
 connectDB();
 
 
-// email password
-// post /admin/signup
-
-// Middleware
-app.use(express.json()); // for parsing application/json
+app.post("/webhook", express.raw({ type: "application/json" }), require("./routes/webhook"));
+app.use(express.json()); 
 
 // Use admin routes
 app.use('/admin', adminRoutes);

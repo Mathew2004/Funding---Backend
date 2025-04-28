@@ -26,8 +26,9 @@ router.post("/", async (req, res) => {
                 },
             ],
             mode: "payment",
-            success_url: "https://funding-front-end-three.vercel.app/payment/success",
-            cancel_url: "https://funding-front-end-three.vercel.app/payment/cancel",
+            // success_url: "https://funding-front-end-three.vercel.app/payment/success",
+            success_url: "http://localhost:3000/payment/success",
+            cancel_url: "http://localhost:3000/payment/cancel",
             metadata: {
                 name,
                 phone,
